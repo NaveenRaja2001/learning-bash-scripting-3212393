@@ -1,0 +1,8 @@
+mkdir -p test.files
+
+for i in /var/log/*; do
+  size_kb=$(du -k "$i" | cut -f1)
+  if [[ $size_kb -gt 50 ]]; then
+    cp -r "$i" test.files/
+  fi
+done
